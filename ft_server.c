@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_minitalk.h"
-void	handlemsg()
+void	handlemsg(int sig)
 {
 
 }
@@ -21,10 +21,19 @@ int	main(void)
     pid_t	procces;
     struct sigaction	sa;
 	
-	sa.sa_handler = &handlemsg;
-	sa.sa_flags = SA_RESTART;
     write(1, "Server PID: ", 12);
     procces = getpid();
     ft_putnbr_fd(procces,1);
     write(1, "\n", 1);
+	sa.sa_handler = &handlemsg;
+	sigemptyset(&sa.sa_mask);
+	sa.sa_flags = SA_RESTART;
+	sigaction(SIGUSR2, &sa, NULL);
+	sigaction(SIGUSR1, &sa, NULL);
+	while(1)
+	{
+		//sleep(1);
+		pause();
+	}
+	return (0);
 }
