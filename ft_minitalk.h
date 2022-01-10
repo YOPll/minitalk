@@ -13,9 +13,10 @@
 #ifndef FT_MINITALK_H
 # define FT_MINITALK_H
 
-#include <unistd.h>
-#include <sys/types.h>
-#include <stdio.h>
+# include <unistd.h>
+# include <sys/types.h>
+# include <stdio.h>
+# include <signal.h>
 
 void	ft_putchar_fd(char c, int fd);
 void	ft_putnbr_fd(int n, int fd);

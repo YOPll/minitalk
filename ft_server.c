@@ -11,17 +11,20 @@
 /* ************************************************************************** */
 
 #include "ft_minitalk.h"
-
-int main(void)
+void	handlemsg()
 {
-    pid_t   procces;
 
+}
+
+int	main(void)
+{
+    pid_t	procces;
+    struct sigaction	sa;
+	
+	sa.sa_handler = &handlemsg;
+	sa.sa_flags = SA_RESTART;
     write(1, "Server PID: ", 12);
     procces = getpid();
     ft_putnbr_fd(procces,1);
     write(1, "\n", 1);
-    while (1)
-    {
-        
-    }
 }
