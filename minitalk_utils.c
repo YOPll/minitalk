@@ -6,16 +6,11 @@
 /*   By: yopi <yopi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:15:15 by yopi              #+#    #+#             */
-/*   Updated: 2022/01/09 01:35:13 by yopi             ###   ########.fr       */
+/*   Updated: 2022/01/11 03:16:29 by yopi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minitalk.h"
-
-void	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-}
 
 void	ft_putnbr_fd(int n, int fd)
 {
@@ -32,3 +27,26 @@ void	ft_putnbr_fd(int n, int fd)
 	ft_putchar_fd(nbr % 10 + '0', fd);
 }
 
+int	ft_atoi(const char *str)
+{
+	int	j;
+	int	res;
+
+	j = 1;
+	res = 0;
+	while (*str == '\t' || *str == '\f' || *str == '\r'
+		|| *str == ' ' || *str == '\v' || *str == '\n')
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			j *= -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		res = res * 10 + (*str - '0');
+		str++;
+	}
+	return (res * j);
+}

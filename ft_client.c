@@ -6,11 +6,25 @@
 /*   By: yopi <yopi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 04:20:08 by yopi              #+#    #+#             */
-/*   Updated: 2022/01/08 04:34:30 by yopi             ###   ########.fr       */
+/*   Updated: 2022/01/11 03:20:00 by yopi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int main(int ac, char *av[])
 {
-    
+	char	*bits;
+	int		pid;
+	int		i;
+	
+	if (ac == 3)
+	{
+		pid = ft_atoi(av[1]);
+		i  = 0;
+		while (av[2][i])
+		{
+			i++;	
+		}
+	}
+	else 
+		return (0);
 }
