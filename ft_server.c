@@ -68,7 +68,7 @@ int	main(void)
 	ft_putnbr_fd(procces,1);
 	write(1, "\n", 1);
 	//
-	sig.sa_handler = handle;
+	sig.sa_sigaction = &handle;
 	sigemptyset(&sig.sa_mask);
 	sig.sa_flags = SA_RESTART;
 	sigaction(SIGUSR1, &sig, NULL);
