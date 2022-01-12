@@ -10,19 +10,36 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_minitalk.h"
+
+void	ft_sendsig(char b_c, int pid)
+{
+	int		i;
+	i = 7;
+	while (i >= 0)
+	{
+		usleep(350);
+		if (b_c >> i & 1)
+			kill(pid, SIGUSR1);
+		else if (b_c >> i & 0)
+			kill(pid, SIGUSR2);
+		i--;
+	}
+}
+
 int main(int ac, char *av[])
 {
-	char	*bits;
-	int		pid;
-	int		i;
+	int	pid;
+	int	i;
 	
 	if (ac == 3)
 	{
 		pid = ft_atoi(av[1]);
-		i  = 0;
+		i = 0;
 		while (av[2][i])
 		{
-			i++;	
+			ft_sendsig(av[2][i], pid);
+			i++;
 		}
 	}
 	else 

@@ -12,6 +12,11 @@
 
 #include "ft_minitalk.h"
 
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}
+
 void	ft_putnbr_fd(int n, int fd)
 {
 	int long	nbr;
@@ -19,7 +24,7 @@ void	ft_putnbr_fd(int n, int fd)
 	nbr = (int long) n;
 	if (nbr < 0)
 	{
-		ft_putchar_fd('-', fd);
+		write(fd, "-", 1);
 		nbr *= -1;
 	}
 	if (n / 10)
