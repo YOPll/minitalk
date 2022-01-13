@@ -17,6 +17,20 @@ void	ft_putchar_fd(char c, int fd)
 	write(fd, &c, 1);
 }
 
+int	ft_str_isnum(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		++i;
+		if (str[i] == '\0')
+			return (1);
+	}
+	return (0);
+}
+
 void	ft_putnbr_fd(int n, int fd)
 {
 	int long	nbr;

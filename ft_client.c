@@ -33,7 +33,7 @@ int	main(int ac, char *av[])
 	int	pid;
 	int	i;
 
-	if (ac == 3)
+	if (ac == 3 && ft_str_isnum(av[1]))
 	{
 		pid = ft_atoi(av[1]);
 		i = 0;
@@ -44,5 +44,9 @@ int	main(int ac, char *av[])
 		}
 	}
 	else
-		return (0);
+	{
+		write(1, "./client [server-pid] [message]\n", 33);
+		exit(0);
+	}
+	return (0);
 }

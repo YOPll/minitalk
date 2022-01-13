@@ -14,11 +14,13 @@
 # define FT_MINITALK_H
 
 # include <unistd.h>
+# include <stdlib.h>
 # include <sys/types.h>
 # include <stdio.h>
 # include <signal.h>
 
 void	ft_putnbr_fd(int n, int fd);
 int		ft_atoi(const char *str);
+int		ft_str_isnum(char *str);
 
 #endif
