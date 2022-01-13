@@ -21,7 +21,7 @@ void	ft_sendsig(char b_c, int pid)
 		usleep(350);
 		if (b_c >> i & 1)
 			kill(pid, SIGUSR1);
-		else if (b_c >> i & 0)
+		else
 			kill(pid, SIGUSR2);
 		i--;
 	}
