@@ -15,10 +15,11 @@
 void	ft_sendsig(char b_c, int pid)
 {
 	int		i;
+
 	i = 7;
 	while (i >= 0)
 	{
-		usleep(350);
+		usleep(500);
 		if (b_c >> i & 1)
 			kill(pid, SIGUSR1);
 		else
@@ -27,11 +28,11 @@ void	ft_sendsig(char b_c, int pid)
 	}
 }
 
-int main(int ac, char *av[])
+int	main(int ac, char *av[])
 {
 	int	pid;
 	int	i;
-	
+
 	if (ac == 3)
 	{
 		pid = ft_atoi(av[1]);
@@ -42,6 +43,6 @@ int main(int ac, char *av[])
 			i++;
 		}
 	}
-	else 
+	else
 		return (0);
 }

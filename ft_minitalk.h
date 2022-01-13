@@ -19,6 +19,6 @@
 # include <signal.h>
 
 void	ft_putnbr_fd(int n, int fd);
-int     ft_atoi(const char *str);
+int		ft_atoi(const char *str);
 
 #endif
