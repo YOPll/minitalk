@@ -31,7 +31,7 @@ void	ft_sendsig(char b_c, int pid)
 void	handler2(int sig)
 {
 	(void)sig;
-	write(1, "Received", 8);
+	write(1, "Signal Received", 15);
 }
 
 int	main(int ac, char *av[])
