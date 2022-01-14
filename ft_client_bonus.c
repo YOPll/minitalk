@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_client.c                                        :+:      :+:    :+:   */
+/*   ft_client_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yopi <yopi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 04:20:08 by yopi              #+#    #+#             */
-/*   Updated: 2022/01/11 03:20:00 by yopi             ###   ########.fr       */
+/*   Updated: 2022/01/14 03:02:31 by yopi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ void	ft_sendsig(char b_c, int pid)
 	}
 }
 
+void	handler2(int sig)
+{
+	write(1, "x", 1);
+	(void)sig;
+}
+
 int	main(int ac, char *av[])
 {
 	int	pid;
@@ -35,12 +41,14 @@ int	main(int ac, char *av[])
 
 	if (ac == 3 && ft_str_isnum(av[1]))
 	{
+		signal(SIGUSR2, &handler2);
 		pid = ft_atoi(av[1]);
 		i = 0;
 		while (av[2][i])
 		{
 			ft_sendsig(av[2][i], pid);
 			i++;
+			usleep(200);
 		}
 	}
 	else

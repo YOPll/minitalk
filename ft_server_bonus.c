@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_server.c                                        :+:      :+:    :+:   */
+/*   ft_server_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yopi <yopi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 04:17:16 by yopi              #+#    #+#             */
-/*   Updated: 2022/01/11 03:00:00 by yopi             ###   ########.fr       */
+/*   Updated: 2022/01/14 03:08:46 by yopi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	handle(int sig, siginfo_t *data, void *empty)
 int	main(void)
 {
 	pid_t				procces;
+	int					i;
 	struct sigaction	sig;
 
 	write(1, "Server PID: ", 12);
@@ -72,7 +73,15 @@ int	main(void)
 	sig.sa_flags = SA_RESTART;
 	sigaction(SIGUSR1, &sig, NULL);
 	sigaction(SIGUSR2, &sig, NULL);
+	i = 0;
 	while (1)
+	{
+		if (i != g_t)
+		{
+			i = g_t;
+			kill (g_t, SIGUSR2);
+		}
 		pause();
+	}
 	return (0);
 }
