@@ -19,7 +19,7 @@ void	ft_sendsig(char b_c, int pid)
 	i = 7;
 	while (i >= 0)
 	{
-		usleep(500);
+		usleep(600);
 		if (b_c >> i & 1)
 			kill(pid, SIGUSR1);
 		else
